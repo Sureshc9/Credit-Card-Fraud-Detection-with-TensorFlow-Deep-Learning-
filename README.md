@@ -7,7 +7,9 @@ Fraud detection is a critical application of machine learning where identifying 
 
 # Dataset:
 Source: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud?resource=download
+
 Rows: 284,807
+
 Features: 28 anonymized numerical features + Amount, Time, and the target column Class (0 = Legit, 1 = Fraud)
 
 # Model Architecture:
