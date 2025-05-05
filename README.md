@@ -14,9 +14,13 @@ Features: 28 anonymized numerical features + Amount, Time, and the target column
 
 # Model Architecture:
 Built with the TensorFlow Functional API, the architecture includes:
+  
   Feature-wise Normalization layers
+  
   Hidden layers: 128 → 64 units with ReLU activation
+  
   Dropout regularization to reduce overfitting
+  
   Output layer with Sigmoid for binary classification
 
 
