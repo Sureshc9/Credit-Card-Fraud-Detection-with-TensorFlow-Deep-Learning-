@@ -1,117 +1,106 @@
+# Credit Card Fraud Detection with TensorFlow (Deep Learning):
+
+  This project implements a deep learning model using TensorFlow Functional API to detect fraudulent transactions from credit card data. The solution focuses on handling class imbalance, feature normalization, and real-world model evaluation metrics like AUC, Precision, and Recall.
 
 
-🔎 Overview
+# Overview:
 
 Fraud detection is a high-impact area of data science involving highly imbalanced classification. This project targets binary classification to predict whether a transaction is fraudulent (1) or legitimate (0) based on anonymized features.
 
-📈 Dataset
+# Dataset:
 
-Source: Kaggle Credit Card Fraud Dataset
+  Source: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud?resource=download
 
-Rows: 284,807
+  Rows: 284,807 transactions
 
-Features: V1-V28 (PCA components), Amount, Time
+  Frauds: ~492 (~0.17% of total)
 
-Target: Class — 0 (Non-fraud), 1 (Fraud)
+  Features:
+    * 28 anonymized PCA-like features (V1 to V28)
+    * Amount, Time (preprocessed)
+    * Class: Target label (0 = Legit, 1 = Fraud)
+
+# Model Architecture:
+
+Built with TensorFlow 2.x Functional API:
+
+    Input (normalized)
+           ↓
+    Dense(128) → BatchNorm → Dropout(0.5)
+           ↓
+    Dense(64) → Dropout(0.3)
+           ↓
+    Output Layer (Sigmoid)
+    
+  Activation: ReLU (hidden), Sigmoid (output)
+
+  Loss: Binary Crossentropy
+  
+  Optimizer: Adam
+  
+  Metrics: AUC, Precision, Recall
+
+# Pipeline Steps:
+
+  | Step                   | Description                                              |
+  | ---------------------- | -------------------------------------------------------- |
+  | **1. Data Cleaning**   | Drop `Time`, log-transform `Amount`                      |
+  | **2. Splitting**       | Train (70%) / Val (15%) / Test (15%) with stratification |
+  | **3. Input Pipeline**  | Use `tf.data.Dataset` with prefetch and batching         |
+  | **4. Feature Scaling** | Apply `tf.keras.layers.Normalization()` per feature      |
+  | **5. Model Training**  | With `EarlyStopping` on validation AUC                   |
+  | **6. Evaluation**      | Confusion Matrix, Classification Report, ROC AUC         |
 
 
+# Evaluation Metrics:
 
-🛠️ Pipeline Steps
+  | Metric                | Value |
+  | --------------------- | ----- |
+  | **ROC AUC Score**     | 0.97  |
+  | **Precision (Fraud)** | 0.92  |
+  | **Recall (Fraud)**    | 0.77  |
+  | **F1-Score (Fraud)**  | 0.84  |
 
-1. Data Preprocessing
 
-Log transformation on Amount
+# 🌟 Visualizations:
 
-Dropped Time
+  Model Training
 
-Normalized all input features
+  Classification Report
 
-Stratified train/val/test split (70/15/15)
-
-2. Input Pipeline
-
-Built using tf.data.Dataset
-
-Efficient batching and prefetching for scalability
-
-3. Model Architecture
-
-Input: Feature-wise normalization layers
-
-Hidden Layers: 128 ➔ 64 neurons with ReLU activation
-
-Dropout: 0.5 & 0.3 to prevent overfitting
-
-Output: Sigmoid activation for binary classification
-
-4. Model Training
-
-Optimizer: Adam (lr=1e-3)
-
-Loss: BinaryCrossentropy
-
-Metrics: AUC, Precision, Recall
-
-Early stopping: Monitors val_auc
-
-5. Evaluation
-
-ROC AUC
-
-Confusion matrix
-
-Classification report
-
-🔬 Performance Metrics
-
-Metric
-
-Score
-
-ROC AUC
-
-0.9717
-
-Precision (Fraud)
-
-0.92
-
-Recall (Fraud)
-
-0.77
-
-F1-Score (Fraud)
-
-0.84
+              precision    recall  f1-score   support
+         0       1.00      1.00      1.00     42648
+         1       0.92      0.77      0.84        74
 
 
 
-🌟 Visualizations
+  Confusion matrix heatm
+  ![Unknown](https://github.com/user-attachments/assets/0c72abfd-40a4-4776-b16d-d0afb97328a9)
+ap
+  
 
-ROC & Precision-Recall Curves
+# Technologies Used:
 
-Metric tracking over epochs (Loss, Precision, Recall, AUC)
+  * Python 3
 
-Confusion matrix heatmap
+  * TensorFlow 2.x (Functional API)
 
-📊 Technologies Used
+  * Pandas, NumPy
 
-Python 3
+  * Scikit-learn
 
-TensorFlow 2.x (Functional API)
+  * Seaborn & Matplotlib
 
-Pandas, NumPy
+# Future Work:
 
-Scikit-learn
+  * Introduce SMOTE or more robust class-weighting
 
-Seaborn & Matplotlib
+  * Hyperparameter tuning
 
-💡 Future Work
+  * Try advanced models like XGBoost or LightGBM
 
-Introduce SMOTE or more robust class-weighting
+  * Deploy using FastAPI or Streamlit dashboard for real-time prediction
 
-Hyperparameter tuning
+# Inspiration:
 
-Try advanced models like XGBoost or LightGBM
-
-Deploy using FastAPI or Streamlit dashboard for real-time prediction
+  Fraud detection is critical in the fintech world. The key challenge is extreme class imbalance. This project demonstrates how deep learning and scalable pipelines can improve fraud classification, balancing recall and precision.
