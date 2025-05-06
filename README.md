@@ -73,6 +73,8 @@ Built with the TensorFlow Functional API, the architecture includes:
   > Training metrics over epochs: loss, precision, recall, AUC
   
   > Confusion matrix heatmap
+  ![Unknown](https://github.com/user-attachments/assets/969a197a-b120-4e69-a966-23937ac1f03c)
+
   
   > ROC and Precision-Recall curves
 
