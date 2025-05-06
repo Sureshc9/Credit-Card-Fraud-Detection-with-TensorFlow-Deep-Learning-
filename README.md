@@ -51,7 +51,7 @@ Built with the TensorFlow Functional API, the architecture includes:
 
 5. Evaluation
 
-   ROC AUC Score - 0.9717153492828788
+   ROC AUC Score
 
    Confusion Matrix
 
