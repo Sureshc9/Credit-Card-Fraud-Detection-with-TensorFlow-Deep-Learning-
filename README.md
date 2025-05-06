@@ -51,7 +51,7 @@ Built with the TensorFlow Functional API, the architecture includes:
 
 5. Evaluation
 
-   ROC AUC Score
+   ROC AUC Score - 0.9717153492828788
 
    Confusion Matrix
 
@@ -70,13 +70,9 @@ Built with the TensorFlow Functional API, the architecture includes:
 
 # Visualizations:
   
-  > Training metrics over epochs: loss, precision, recall, AUC
-  
   > Confusion matrix heatmap
   ![Unknown](https://github.com/user-attachments/assets/969a197a-b120-4e69-a966-23937ac1f03c)
-
-  
-  > ROC and Precision-Recall curves
+   
 
 # Technologies Used:
   
